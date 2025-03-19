@@ -1,0 +1,47 @@
+Text Editor Implementation with Stack
+This code implements a simple text editor using a stack data structure. The editor allows undoing and redoing text operations based on a pattern of commands. Here's a breakdown of how it works:
+Core Components
+Node Class
+
+A basic building block for the linked list implementation of the stack
+Each node stores a value (data) and a reference to the next node (next)
+
+Stack Class
+
+Implements a stack using a linked list
+Tracks the top node and the number of elements (size)
+Provides standard stack operations: push, pop, peek, etc.
+
+Text Editor Function
+
+Takes two parameters: text (the initial text) and pattern (a sequence of undo/redo commands)
+Uses two stacks: u for the current text state and r for storing characters that were undone
+Processes each command in the pattern:
+
+'u' means undo: move a character from u to r
+'r' means redo: move a character from r back to u
+
+
+Finally, constructs and prints the resulting text
+
+How the Text Editor Works
+
+First, all characters from the input text are pushed onto the undo stack u
+For each command in the pattern:
+
+If the command is 'u', pop a character from u and push it onto r
+If the command is 'r', pop a character from r and push it back onto u
+
+
+After processing all commands, the final text is constructed by popping all characters from u
+
+Example
+
+Initial text: "kolkata"
+Pattern: "uurruru"
+Final result: The text after applying all undo/redo operations
+
+Time and Space Complexity
+
+Time Complexity: O(n + m) where n is the length of the text and m is the length of the pattern
+Space Complexity: O(n) for storing the characters in the stacks
